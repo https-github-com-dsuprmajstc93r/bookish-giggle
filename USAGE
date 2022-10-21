@@ -1,10 +1,15 @@
 Description:
-    The 'rails plugin new' command creates a skeleton for developing any
-    kind of Rails extension with ability to run tests using dummy Rails
-    application.
+    The 'rails new' command creates a new Rails application with a default
+    directory structure and configuration at the path you specify.
+
+    You can specify extra command-line arguments to be used every time
+    'rails new' runs in the .railsrc configuration file in your home directory,
+    or in $XDG_CONFIG_HOME/rails/railsrc if XDG_CONFIG_HOME is set.
+
+    Note that the arguments specified in the .railsrc file don't affect the
+    defaults values shown above in this help message.
 
 Example:
-    rails plugin new ~/Code/Ruby/blog
+    rails new ~/Code/Ruby/weblog
 
-    This generates a skeletal Rails plugin in ~/Code/Ruby/blog.
-    See the README in the newly created plugin to get going.
+    This generates a skeletal Rails installation in ~/Code/Ruby/weblog.
