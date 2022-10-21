@@ -1,0 +1,2978 @@
+From 459f74556a0de0264290e970b3e41db50a8c5c2c Mon Sep 17 00:00:00 2001
+From: Richard <113485471+dsuprmajstc93r@users.noreply.github.com>
+Date: Fri, 21 Oct 2022 05:34:03 -0600
+Subject: [PATCH] Add files via upload
+
+Signed-off-by: Richard <113485471+dsuprmajstc93r@users.noreply.github.com>
+---
+ %file_name%_generator.rb.tt      |   3 +
+ .empty_directory                 |   0
+ 404.html                         |  67 ++++
+ 422.html                         |  67 ++++
+ 500.html                         |  66 ++++
+ Gemfile.tt                       |  65 +++-
+ README.md.tt                     |  38 +-
+ Rakefile.tt                      |  16 +-
+ USAGE                            |  17 +-
+ USAGE.tt                         |   8 +
+ app_generator.rb                 | 638 +++++++++++++++++++++++++++++++
+ apple-touch-icon-precomposed.png |   0
+ apple-touch-icon.png             |   0
+ application.rb.tt                |  53 +++
+ application_controller.rb.tt     |   5 +
+ application_record_generator.rb  |   9 +
+ assets.rb.tt                     |  12 +
+ benchmark.rb.tt                  |  15 +
+ benchmark_generator.rb           |  29 ++
+ boot.rb.tt                       |   9 +-
+ cable.yml.tt                     |  10 +
+ change_generator.rb              |  65 ++++
+ config.ru.tt                     |   6 +
+ connection_test.rb.tt            |  11 +
+ content_security_policy.rb.tt    |  25 ++
+ controller.rb.tt                 |  65 +---
+ controller_generator.rb          |  43 ++-
+ cors.rb.tt                       |  16 +
+ credentials_generator.rb         |  56 +++
+ development.rb.tt                |  80 ++++
+ en.yml                           |  33 ++
+ encrypted_file_generator.rb      |  31 ++
+ encryption_key_file_generator.rb |  58 +++
+ environment.rb.tt                |   5 +
+ favicon.ico                      |   0
+ filter_parameter_logging.rb.tt   |   8 +
+ generator_generator.rb           |  27 ++
+ gitattributes.tt                 |   9 +
+ gitignore.tt                     |  48 ++-
+ helper.rb.tt                     |   4 +
+ helper_generator.rb              |  20 +
+ inflections.rb.tt                |  16 +
+ integration_test_generator.rb    |   9 +
+ jdbc.yml.tt                      |  68 ++++
+ jdbcmysql.yml.tt                 |  54 +++
+ jdbcpostgresql.yml.tt            |  70 ++++
+ master_key_generator.rb          |  53 +++
+ migration_generator.rb           |  10 +
+ model_generator.rb               |  13 +-
+ new_framework_defaults_7_0.rb.tt | 135 +++++++
+ permissions_policy.rb.tt         |  11 +
+ production.rb.tt                 | 107 ++++++
+ puma.rb.tt                       |  43 +++
+ robots.txt                       |   1 +
+ routes.rb.tt                     |   8 +-
+ ruby-version.tt                  |   1 +
+ seeds.rb.tt                      |   7 +
+ storage.yml.tt                   |  34 ++
+ test.rb.tt                       |  64 ++++
+ test_helper.rb.tt                |  30 +-
+ 60 files changed, 2313 insertions(+), 158 deletions(-)
+ create mode 100644 %file_name%_generator.rb.tt
+ create mode 100644 .empty_directory
+ create mode 100644 404.html
+ create mode 100644 422.html
+ create mode 100644 500.html
+ create mode 100644 USAGE.tt
+ create mode 100644 app_generator.rb
+ create mode 100644 apple-touch-icon-precomposed.png
+ create mode 100644 apple-touch-icon.png
+ create mode 100644 application.rb.tt
+ create mode 100644 application_controller.rb.tt
+ create mode 100644 application_record_generator.rb
+ create mode 100644 assets.rb.tt
+ create mode 100644 benchmark.rb.tt
+ create mode 100644 benchmark_generator.rb
+ create mode 100644 cable.yml.tt
+ create mode 100644 change_generator.rb
+ create mode 100644 config.ru.tt
+ create mode 100644 connection_test.rb.tt
+ create mode 100644 content_security_policy.rb.tt
+ create mode 100644 cors.rb.tt
+ create mode 100644 credentials_generator.rb
+ create mode 100644 development.rb.tt
+ create mode 100644 en.yml
+ create mode 100644 encrypted_file_generator.rb
+ create mode 100644 encryption_key_file_generator.rb
+ create mode 100644 environment.rb.tt
+ create mode 100644 favicon.ico
+ create mode 100644 filter_parameter_logging.rb.tt
+ create mode 100644 generator_generator.rb
+ create mode 100644 gitattributes.tt
+ create mode 100644 helper.rb.tt
+ create mode 100644 helper_generator.rb
+ create mode 100644 inflections.rb.tt
+ create mode 100644 integration_test_generator.rb
+ create mode 100644 jdbc.yml.tt
+ create mode 100644 jdbcmysql.yml.tt
+ create mode 100644 jdbcpostgresql.yml.tt
+ create mode 100644 master_key_generator.rb
+ create mode 100644 migration_generator.rb
+ create mode 100644 new_framework_defaults_7_0.rb.tt
+ create mode 100644 permissions_policy.rb.tt
+ create mode 100644 production.rb.tt
+ create mode 100644 puma.rb.tt
+ create mode 100644 robots.txt
+ create mode 100644 ruby-version.tt
+ create mode 100644 seeds.rb.tt
+ create mode 100644 storage.yml.tt
+ create mode 100644 test.rb.tt
+
+diff --git a/%file_name%_generator.rb.tt b/%file_name%_generator.rb.tt
+new file mode 100644
+index 00000000000..766bd3f3816
+--- /dev/null
++++ b/%file_name%_generator.rb.tt
+@@ -0,0 +1,3 @@
++class <%= class_name %>Generator < Rails::Generators::NamedBase
++  source_root File.expand_path("templates", __dir__)
++end
+diff --git a/.empty_directory b/.empty_directory
+new file mode 100644
+index 00000000000..e69de29bb2d
+diff --git a/404.html b/404.html
+new file mode 100644
+index 00000000000..2be3af26fc5
+--- /dev/null
++++ b/404.html
+@@ -0,0 +1,67 @@
++<!DOCTYPE html>
++<html>
++<head>
++  <title>The page you were looking for doesn't exist (404)</title>
++  <meta name="viewport" content="width=device-width,initial-scale=1">
++  <style>
++  .rails-default-error-page {
++    background-color: #EFEFEF;
++    color: #2E2F30;
++    text-align: center;
++    font-family: arial, sans-serif;
++    margin: 0;
++  }
++
++  .rails-default-error-page div.dialog {
++    width: 95%;
++    max-width: 33em;
++    margin: 4em auto 0;
++  }
++
++  .rails-default-error-page div.dialog > div {
++    border: 1px solid #CCC;
++    border-right-color: #999;
++    border-left-color: #999;
++    border-bottom-color: #BBB;
++    border-top: #B00100 solid 4px;
++    border-top-left-radius: 9px;
++    border-top-right-radius: 9px;
++    background-color: white;
++    padding: 7px 12% 0;
++    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
++  }
++
++  .rails-default-error-page h1 {
++    font-size: 100%;
++    color: #730E15;
++    line-height: 1.5em;
++  }
++
++  .rails-default-error-page div.dialog > p {
++    margin: 0 0 1em;
++    padding: 1em;
++    background-color: #F7F7F7;
++    border: 1px solid #CCC;
++    border-right-color: #999;
++    border-left-color: #999;
++    border-bottom-color: #999;
++    border-bottom-left-radius: 4px;
++    border-bottom-right-radius: 4px;
++    border-top-color: #DADADA;
++    color: #666;
++    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
++  }
++  </style>
++</head>
++
++<body class="rails-default-error-page">
++  <!-- This file lives in public/404.html -->
++  <div class="dialog">
++    <div>
++      <h1>The page you were looking for doesn't exist.</h1>
++      <p>You may have mistyped the address or the page may have moved.</p>
++    </div>
++    <p>If you are the application owner check the logs for more information.</p>
++  </div>
++</body>
++</html>
+diff --git a/422.html b/422.html
+new file mode 100644
+index 00000000000..c08eac0d1df
+--- /dev/null
++++ b/422.html
+@@ -0,0 +1,67 @@
++<!DOCTYPE html>
++<html>
++<head>
++  <title>The change you wanted was rejected (422)</title>
++  <meta name="viewport" content="width=device-width,initial-scale=1">
++  <style>
++  .rails-default-error-page {
++    background-color: #EFEFEF;
++    color: #2E2F30;
++    text-align: center;
++    font-family: arial, sans-serif;
++    margin: 0;
++  }
++
++  .rails-default-error-page div.dialog {
++    width: 95%;
++    max-width: 33em;
++    margin: 4em auto 0;
++  }
++
++  .rails-default-error-page div.dialog > div {
++    border: 1px solid #CCC;
++    border-right-color: #999;
++    border-left-color: #999;
++    border-bottom-color: #BBB;
++    border-top: #B00100 solid 4px;
++    border-top-left-radius: 9px;
++    border-top-right-radius: 9px;
++    background-color: white;
++    padding: 7px 12% 0;
++    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
++  }
++
++  .rails-default-error-page h1 {
++    font-size: 100%;
++    color: #730E15;
++    line-height: 1.5em;
++  }
++
++  .rails-default-error-page div.dialog > p {
++    margin: 0 0 1em;
++    padding: 1em;
++    background-color: #F7F7F7;
++    border: 1px solid #CCC;
++    border-right-color: #999;
++    border-left-color: #999;
++    border-bottom-color: #999;
++    border-bottom-left-radius: 4px;
++    border-bottom-right-radius: 4px;
++    border-top-color: #DADADA;
++    color: #666;
++    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
++  }
++  </style>
++</head>
++
++<body class="rails-default-error-page">
++  <!-- This file lives in public/422.html -->
++  <div class="dialog">
++    <div>
++      <h1>The change you wanted was rejected.</h1>
++      <p>Maybe you tried to change something you didn't have access to.</p>
++    </div>
++    <p>If you are the application owner check the logs for more information.</p>
++  </div>
++</body>
++</html>
+diff --git a/500.html b/500.html
+new file mode 100644
+index 00000000000..78a030af22e
+--- /dev/null
++++ b/500.html
+@@ -0,0 +1,66 @@
++<!DOCTYPE html>
++<html>
++<head>
++  <title>We're sorry, but something went wrong (500)</title>
++  <meta name="viewport" content="width=device-width,initial-scale=1">
++  <style>
++  .rails-default-error-page {
++    background-color: #EFEFEF;
++    color: #2E2F30;
++    text-align: center;
++    font-family: arial, sans-serif;
++    margin: 0;
++  }
++
++  .rails-default-error-page div.dialog {
++    width: 95%;
++    max-width: 33em;
++    margin: 4em auto 0;
++  }
++
++  .rails-default-error-page div.dialog > div {
++    border: 1px solid #CCC;
++    border-right-color: #999;
++    border-left-color: #999;
++    border-bottom-color: #BBB;
++    border-top: #B00100 solid 4px;
++    border-top-left-radius: 9px;
++    border-top-right-radius: 9px;
++    background-color: white;
++    padding: 7px 12% 0;
++    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
++  }
++
++  .rails-default-error-page h1 {
++    font-size: 100%;
++    color: #730E15;
++    line-height: 1.5em;
++  }
++
++  .rails-default-error-page div.dialog > p {
++    margin: 0 0 1em;
++    padding: 1em;
++    background-color: #F7F7F7;
++    border: 1px solid #CCC;
++    border-right-color: #999;
++    border-left-color: #999;
++    border-bottom-color: #999;
++    border-bottom-left-radius: 4px;
++    border-bottom-right-radius: 4px;
++    border-top-color: #DADADA;
++    color: #666;
++    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
++  }
++  </style>
++</head>
++
++<body class="rails-default-error-page">
++  <!-- This file lives in public/500.html -->
++  <div class="dialog">
++    <div>
++      <h1>We're sorry, but something went wrong.</h1>
++    </div>
++    <p>If you are the application owner check the logs for more information.</p>
++  </div>
++</body>
++</html>
+diff --git a/Gemfile.tt b/Gemfile.tt
+index 231c1f302f2..06b47ff016a 100644
+--- a/Gemfile.tt
++++ b/Gemfile.tt
+@@ -1,19 +1,68 @@
+ source "https://rubygems.org"
+ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+-<% unless options[:skip_gemspec] -%>
+ 
+-# Specify your gem's dependencies in <%= name %>.gemspec.
+-gemspec
+-<% end -%>
++ruby <%= "\"#{RUBY_VERSION}\"" -%>
++
+ <% gemfile_entries.each do |gemfile_entry| %>
+ <%= gemfile_entry %>
+ <% end -%>
+-<% if RUBY_ENGINE == "ruby" -%>
++<% unless options.minimal? -%>
+ 
+-# Start debugger with binding.b [https://github.com/ruby/debug]
+-# gem "debug", ">= 1.0.0"
++# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
++# gem "kredis"
++
++# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
++# gem "bcrypt", "~> 3.1.7"
+ <% end -%>
+-<% if RUBY_PLATFORM.match?(/bccwin|cygwin|emx|mingw|mswin|wince|java/) -%>
+ 
++# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
++<% if depend_on_bootsnap? -%>
++
++# Reduces boot times through caching; required in config/boot.rb
++gem "bootsnap", require: false
++<% end -%>
++<% unless skip_sprockets? || options.minimal? -%>
++
++# Use Sass to process CSS
++# gem "sassc-rails"
++<% end -%>
++<% unless skip_active_storage? -%>
++
++# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
++# gem "image_processing", "~> 1.2"
+ <% end -%>
++<%- if options.api? -%>
++
++# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
++# gem "rack-cors"
++<%- end -%>
++<% if RUBY_ENGINE == "ruby" -%>
++
++group :development, :test do
++  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
++  gem "debug", platforms: %i[ mri mingw x64_mingw ]
++end
++<% end -%>
++
++group :development do
++<%- unless options.api? || options.skip_dev_gems? -%>
++  # Use console on exceptions pages [https://github.com/rails/web-console]
++  gem "web-console"
++
++  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
++  # gem "rack-mini-profiler"
++
++<%- end -%>
++  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
++  # gem "spring"
++end
++
++<%- if depends_on_system_test? -%>
++group :test do
++  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
++  gem "capybara"
++  gem "selenium-webdriver"
++  gem "webdrivers"
++end
++<%- end -%>
+diff --git a/README.md.tt b/README.md.tt
+index c14ce81b340..7db80e4ca1b 100644
+--- a/README.md.tt
++++ b/README.md.tt
+@@ -1,28 +1,24 @@
+-# <%= camelized_modules %>
+-Short description and motivation.
++# README
+ 
+-## Usage
+-How to use my plugin.
++This README would normally document whatever steps are necessary to get the
++application up and running.
+ 
+-## Installation
+-Add this line to your application's Gemfile:
++Things you may want to cover:
+ 
+-```ruby
+-gem "<%= name %>"
+-```
++* Ruby version
+ 
+-And then execute:
+-```bash
+-$ bundle
+-```
++* System dependencies
+ 
+-Or install it yourself as:
+-```bash
+-$ gem install <%= name %>
+-```
++* Configuration
+ 
+-## Contributing
+-Contribution directions go here.
++* Database creation
+ 
+-## License
+-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
++* Database initialization
++
++* How to run the test suite
++
++* Services (job queues, cache servers, search engines, etc.)
++
++* Deployment instructions
++
++* ...
+diff --git a/Rakefile.tt b/Rakefile.tt
+index d4b84b00350..9a5ea7383aa 100644
+--- a/Rakefile.tt
++++ b/Rakefile.tt
+@@ -1,14 +1,6 @@
+-require "bundler/setup"
+-<% if engine? && !options[:skip_active_record] && with_dummy_app? -%>
++# Add your own tasks in files placed in lib/tasks ending in .rake,
++# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
+ 
+-APP_RAKEFILE = File.expand_path("<%= dummy_path -%>/Rakefile", __dir__)
+-load "rails/tasks/engine.rake"
+-<% end -%>
+-<% if engine? -%>
++require_relative "config/application"
+ 
+-load "rails/tasks/statistics.rake"
+-<% end -%>
+-<% unless options[:skip_gemspec] -%>
+-
+-require "bundler/gem_tasks"
+-<% end -%>
++Rails.application.load_tasks
+diff --git a/USAGE b/USAGE
+index 9a7bf9f3964..ea2285761fc 100644
+--- a/USAGE
++++ b/USAGE
+@@ -1,10 +1,15 @@
+ Description:
+-    The 'rails plugin new' command creates a skeleton for developing any
+-    kind of Rails extension with ability to run tests using dummy Rails
+-    application.
++    The 'rails new' command creates a new Rails application with a default
++    directory structure and configuration at the path you specify.
++
++    You can specify extra command-line arguments to be used every time
++    'rails new' runs in the .railsrc configuration file in your home directory,
++    or in $XDG_CONFIG_HOME/rails/railsrc if XDG_CONFIG_HOME is set.
++
++    Note that the arguments specified in the .railsrc file don't affect the
++    defaults values shown above in this help message.
+ 
+ Example:
+-    rails plugin new ~/Code/Ruby/blog
++    rails new ~/Code/Ruby/weblog
+ 
+-    This generates a skeletal Rails plugin in ~/Code/Ruby/blog.
+-    See the README in the newly created plugin to get going.
++    This generates a skeletal Rails installation in ~/Code/Ruby/weblog.
+diff --git a/USAGE.tt b/USAGE.tt
+new file mode 100644
+index 00000000000..ebdd2a94a90
+--- /dev/null
++++ b/USAGE.tt
+@@ -0,0 +1,8 @@
++Description:
++    Explain the generator
++
++Example:
++    bin/rails generate <%= file_name %> Thing
++
++    This will create:
++        what/will/it/create
+diff --git a/app_generator.rb b/app_generator.rb
+new file mode 100644
+index 00000000000..7ea9b9ce910
+--- /dev/null
++++ b/app_generator.rb
+@@ -0,0 +1,638 @@
++# frozen_string_literal: true
++
++require "rails/generators/app_base"
++
++module Rails
++  module ActionMethods # :nodoc:
++    attr_reader :options
++
++    def initialize(generator)
++      @generator = generator
++      @options   = generator.options
++    end
++
++    private
++      %w(template copy_file directory empty_directory inside
++         empty_directory_with_keep_file create_file chmod shebang).each do |method|
++        class_eval <<-RUBY, __FILE__, __LINE__ + 1
++          def #{method}(*args, &block)
++            @generator.send(:#{method}, *args, &block)
++          end
++        RUBY
++      end
++
++      def method_missing(meth, *args, &block)
++        @generator.send(meth, *args, &block)
++      end
++  end
++
++  # The application builder allows you to override elements of the application
++  # generator without being forced to reverse the operations of the default
++  # generator.
++  #
++  # This allows you to override entire operations, like the creation of the
++  # Gemfile, README, or JavaScript files, without needing to know exactly
++  # what those operations do so you can create another template action.
++  #
++  #  class CustomAppBuilder < Rails::AppBuilder
++  #    def test
++  #      @generator.gem "rspec-rails", group: [:development, :test]
++  #      run "bundle install"
++  #      generate "rspec:install"
++  #    end
++  #  end
++  class AppBuilder
++    def rakefile
++      template "Rakefile"
++    end
++
++    def readme
++      copy_file "README.md", "README.md"
++    end
++
++    def ruby_version
++      template "ruby-version", ".ruby-version"
++    end
++
++    def gemfile
++      template "Gemfile"
++    end
++
++    def configru
++      template "config.ru"
++    end
++
++    def gitignore
++      template "gitignore", ".gitignore"
++    end
++
++    def gitattributes
++      template "gitattributes", ".gitattributes"
++    end
++
++    def version_control
++      if !options[:skip_git] && !options[:pretend]
++        run "git init", capture: options[:quiet], abort_on_failure: false
++        if user_default_branch.strip.empty?
++          `git symbolic-ref HEAD refs/heads/main`
++        end
++      end
++    end
++
++    def app
++      directory "app"
++
++      empty_directory_with_keep_file "app/assets/images"
++
++      keep_file  "app/controllers/concerns"
++      keep_file  "app/models/concerns"
++    end
++
++    def bin
++      directory "bin" do |content|
++        "#{shebang}\n" + content
++      end
++      chmod "bin", 0755 & ~File.umask, verbose: false
++    end
++
++    def bin_when_updating
++      bin
++    end
++
++    def config
++      empty_directory "config"
++
++      inside "config" do
++        template "routes.rb" unless options[:updating]
++        template "application.rb"
++        template "environment.rb"
++        template "cable.yml" unless options[:updating] || options[:skip_action_cable]
++        template "puma.rb"   unless options[:updating]
++        template "storage.yml" unless options[:updating] || skip_active_storage?
++
++        directory "environments"
++        directory "initializers"
++        directory "locales" unless options[:updating]
++      end
++    end
++
++    def config_when_updating
++      action_cable_config_exist       = File.exist?("config/cable.yml")
++      active_storage_config_exist     = File.exist?("config/storage.yml")
++      rack_cors_config_exist          = File.exist?("config/initializers/cors.rb")
++      assets_config_exist             = File.exist?("config/initializers/assets.rb")
++      asset_manifest_exist            = File.exist?("app/assets/config/manifest.js")
++      asset_app_stylesheet_exist      = File.exist?("app/assets/stylesheets/application.css")
++      csp_config_exist                = File.exist?("config/initializers/content_security_policy.rb")
++      permissions_policy_config_exist = File.exist?("config/initializers/permissions_policy.rb")
++
++      @config_target_version = Rails.application.config.loaded_config_version || "5.0"
++
++      config
++
++      if !options[:skip_action_cable] && !action_cable_config_exist
++        template "config/cable.yml"
++      end
++
++      if !skip_active_storage? && !active_storage_config_exist
++        template "config/storage.yml"
++      end
++
++      if skip_sprockets? && skip_propshaft? && !assets_config_exist
++        remove_file "config/initializers/assets.rb"
++      end
++
++      if skip_sprockets? && !asset_manifest_exist
++        remove_file "app/assets/config/manifest.js"
++      end
++
++      if skip_sprockets? && !asset_app_stylesheet_exist
++        remove_file "app/assets/stylesheets/application.css"
++      end
++
++      unless rack_cors_config_exist
++        remove_file "config/initializers/cors.rb"
++      end
++
++      if options[:api]
++        unless csp_config_exist
++          remove_file "config/initializers/content_security_policy.rb"
++        end
++
++        unless permissions_policy_config_exist
++          remove_file "config/initializers/permissions_policy.rb"
++        end
++      end
++
++      if !skip_sprockets?
++        insert_into_file "config/application.rb", %(require "sprockets/railtie"), after: /require\(["']rails\/all["']\)\n/
++      end
++    end
++
++    def master_key
++      return if options[:pretend] || options[:dummy_app]
++
++      require "rails/generators/rails/master_key/master_key_generator"
++      master_key_generator = Rails::Generators::MasterKeyGenerator.new([], quiet: options[:quiet], force: options[:force])
++      master_key_generator.add_master_key_file_silently
++      master_key_generator.ignore_master_key_file_silently
++    end
++
++    def credentials
++      return if options[:pretend] || options[:dummy_app]
++
++      require "rails/generators/rails/credentials/credentials_generator"
++      Rails::Generators::CredentialsGenerator.new([], quiet: options[:quiet]).add_credentials_file_silently
++    end
++
++    def database_yml
++      template "config/databases/#{options[:database]}.yml", "config/database.yml"
++    end
++
++    def db
++      directory "db"
++    end
++
++    def db_when_updating
++      path = File.expand_path("db/schema.rb", destination_root)
++
++      if File.exist?(path)
++        gsub_file("db/schema.rb", /ActiveRecord::Schema\.define/, "ActiveRecord::Schema[6.1].define")
++      end
++    end
++
++    def lib
++      empty_directory "lib"
++      empty_directory_with_keep_file "lib/tasks"
++      empty_directory_with_keep_file "lib/assets"
++    end
++
++    def log
++      empty_directory_with_keep_file "log"
++    end
++
++    def public_directory
++      directory "public", "public", recursive: false
++    end
++
++    def storage
++      empty_directory_with_keep_file "storage"
++      empty_directory_with_keep_file "tmp/storage"
++    end
++
++    def test
++      empty_directory_with_keep_file "test/fixtures/files"
++      empty_directory_with_keep_file "test/controllers"
++      empty_directory_with_keep_file "test/mailers"
++      empty_directory_with_keep_file "test/models"
++      empty_directory_with_keep_file "test/helpers"
++      empty_directory_with_keep_file "test/integration"
++
++      template "test/channels/application_cable/connection_test.rb"
++      template "test/test_helper.rb"
++    end
++
++    def system_test
++      empty_directory_with_keep_file "test/system"
++
++      template "test/application_system_test_case.rb"
++    end
++
++    def tmp
++      empty_directory_with_keep_file "tmp"
++      empty_directory_with_keep_file "tmp/pids"
++      empty_directory "tmp/cache"
++      empty_directory "tmp/cache/assets"
++    end
++
++    def vendor
++      empty_directory_with_keep_file "vendor"
++    end
++
++    def config_target_version
++      defined?(@config_target_version) ? @config_target_version : Rails::VERSION::STRING.to_f
++    end
++
++    private
++      def user_default_branch
++        @user_default_branch ||= `git config init.defaultbranch`
++      end
++  end
++
++  module Generators
++    # We need to store the RAILS_DEV_PATH in a constant, otherwise the path
++    # can change in Ruby 1.8.7 when we FileUtils.cd.
++    RAILS_DEV_PATH = File.expand_path("../../../../../..", __dir__)
++
++    class AppGenerator < AppBase
++      # :stopdoc:
++
++      add_shared_options_for "application"
++
++      # Add rails command options
++      class_option :version, type: :boolean, aliases: "-v", group: :rails, desc: "Show Rails version number and quit"
++      class_option :api, type: :boolean, desc: "Preconfigure smaller stack for API only apps"
++      class_option :minimal, type: :boolean, desc: "Preconfigure a minimal rails app"
++      class_option :javascript, type: :string, aliases: "-j", default: "importmap", desc: "Choose JavaScript approach [options: importmap (default), webpack, esbuild, rollup]"
++      class_option :css, type: :string, aliases: "-c", desc: "Choose CSS processor [options: tailwind, bootstrap, bulma, postcss, sass... check https://github.com/rails/cssbundling-rails]"
++      class_option :skip_bundle, type: :boolean, aliases: "-B", default: false, desc: "Don't run bundle install"
++
++      def initialize(*args)
++        super
++
++        if !options[:skip_active_record] && !DATABASES.include?(options[:database])
++          raise Error, "Invalid value for --database option. Supported preconfigurations are: #{DATABASES.join(", ")}."
++        end
++
++        # Force sprockets and JavaScript to be skipped when generating API only apps.
++        # Can't modify options hash as it's frozen by default.
++        if options[:api]
++          self.options = options.merge(skip_asset_pipeline: true, skip_javascript: true).freeze
++        end
++
++        if options[:minimal]
++          self.options = options.merge(
++            skip_action_cable: true,
++            skip_action_mailer: true,
++            skip_action_mailbox: true,
++            skip_action_text: true,
++            skip_active_job: true,
++            skip_active_storage: true,
++            skip_bootsnap: true,
++            skip_dev_gems: true,
++            skip_javascript: true,
++            skip_jbuilder: true,
++            skip_system_test: true,
++            skip_hotwire: true).freeze
++        end
++
++        @after_bundle_callbacks = []
++      end
++
++      public_task :set_default_accessors!
++      public_task :create_root
++      public_task :target_rails_prerelease
++
++      def create_root_files
++        build(:readme)
++        build(:rakefile)
++        build(:ruby_version)
++        build(:configru)
++
++        unless options[:skip_git]
++          build(:gitignore)
++          build(:gitattributes)
++        end
++
++        build(:gemfile)
++        build(:version_control)
++      end
++
++      def create_app_files
++        build(:app)
++      end
++
++      def create_bin_files
++        build(:bin)
++      end
++
++      def update_bin_files
++        build(:bin_when_updating)
++      end
++      remove_task :update_bin_files
++
++      def update_db_schema
++        build(:db_when_updating)
++      end
++      remove_task :update_db_schema
++
++      def update_active_storage
++        unless skip_active_storage?
++          rails_command "active_storage:update", inline: true
++        end
++      end
++      remove_task :update_active_storage
++
++      def create_config_files
++        build(:config)
++      end
++
++      def update_config_files
++        build(:config_when_updating)
++      end
++      remove_task :update_config_files
++
++      def create_master_key
++        build(:master_key)
++      end
++
++      def create_credentials
++        build(:credentials)
++      end
++
++      def display_upgrade_guide_info
++        say "\nAfter this, check Rails upgrade guide at https://guides.rubyonrails.org/upgrading_ruby_on_rails.html for more details about upgrading your app."
++      end
++      remove_task :display_upgrade_guide_info
++
++      def create_boot_file
++        template "config/boot.rb"
++      end
++
++      def create_active_record_files
++        return if options[:skip_active_record]
++        build(:database_yml)
++      end
++
++      def create_db_files
++        return if options[:skip_active_record]
++        build(:db)
++      end
++
++      def create_lib_files
++        build(:lib)
++      end
++
++      def create_log_files
++        build(:log)
++      end
++
++      def create_public_files
++        build(:public_directory)
++      end
++
++      def create_tmp_files
++        build(:tmp)
++      end
++
++      def create_vendor_files
++        build(:vendor)
++      end
++
++      def create_test_files
++        build(:test) unless options[:skip_test]
++      end
++
++      def create_system_test_files
++        build(:system_test) if depends_on_system_test?
++      end
++
++      def create_storage_files
++        build(:storage) unless skip_active_storage?
++      end
++
++      def delete_app_assets_if_api_option
++        if options[:api]
++          remove_dir "app/assets"
++          remove_dir "lib/assets"
++          remove_dir "tmp/cache/assets"
++        end
++      end
++
++      def delete_app_helpers_if_api_option
++        if options[:api]
++          remove_dir "app/helpers"
++          remove_dir "test/helpers"
++        end
++      end
++
++      def delete_app_views_if_api_option
++        if options[:api]
++          if options[:skip_action_mailer]
++            remove_dir "app/views"
++          else
++            remove_file "app/views/layouts/application.html.erb"
++          end
++        end
++      end
++
++      def delete_public_files_if_api_option
++        if options[:api]
++          remove_file "public/404.html"
++          remove_file "public/422.html"
++          remove_file "public/500.html"
++          remove_file "public/apple-touch-icon-precomposed.png"
++          remove_file "public/apple-touch-icon.png"
++          remove_file "public/favicon.ico"
++        end
++      end
++
++      def delete_assets_initializer_skipping_sprockets_and_propshaft
++        if skip_sprockets? && skip_propshaft?
++          remove_file "config/initializers/assets.rb"
++        end
++
++        if skip_sprockets?
++          remove_file "app/assets/config/manifest.js"
++          remove_dir  "app/assets/config"
++          remove_file "app/assets/stylesheets/application.css"
++          create_file "app/assets/stylesheets/application.css", "/* Application styles */\n" unless options[:api]
++        end
++      end
++
++      def delete_application_record_skipping_active_record
++        if options[:skip_active_record]
++          remove_file "app/models/application_record.rb"
++        end
++      end
++
++      def delete_active_job_folder_if_skipping_active_job
++        if options[:skip_active_job]
++          remove_dir "app/jobs"
++        end
++      end
++
++      def delete_action_mailer_files_skipping_action_mailer
++        if options[:skip_action_mailer]
++          remove_file "app/views/layouts/mailer.html.erb"
++          remove_file "app/views/layouts/mailer.text.erb"
++          remove_dir "app/mailers"
++          remove_dir "test/mailers"
++        end
++      end
++
++      def delete_action_cable_files_skipping_action_cable
++        if options[:skip_action_cable]
++          remove_dir "app/javascript/channels"
++          remove_dir "app/channels"
++          remove_dir "test/channels"
++        end
++      end
++
++      def delete_non_api_initializers_if_api_option
++        if options[:api]
++          remove_file "config/initializers/content_security_policy.rb"
++          remove_file "config/initializers/permissions_policy.rb"
++        end
++      end
++
++      def delete_api_initializers
++        unless options[:api]
++          remove_file "config/initializers/cors.rb"
++        end
++      end
++
++      def delete_new_framework_defaults
++        unless options[:update]
++          remove_file "config/initializers/new_framework_defaults_7_0.rb"
++        end
++      end
++
++      def finish_template
++        build(:leftovers)
++      end
++
++      public_task :apply_rails_template, :run_bundle
++      public_task :generate_bundler_binstub
++      public_task :run_javascript
++      public_task :run_hotwire
++      public_task :run_css
++
++      def run_after_bundle_callbacks
++        @after_bundle_callbacks.each(&:call)
++      end
++
++      def self.banner
++        "rails new #{arguments.map(&:usage).join(' ')} [options]"
++      end
++
++    # :startdoc:
++
++    private
++      # Define file as an alias to create_file for backwards compatibility.
++      def file(*args, &block)
++        create_file(*args, &block)
++      end
++
++      # Registers a callback to be executed after bundle binstubs
++      # have run.
++      #
++      #   after_bundle do
++      #     git add: '.'
++      #   end
++      def after_bundle(&block) # :doc:
++        @after_bundle_callbacks << block
++      end
++
++      def get_builder_class
++        defined?(::AppBuilder) ? ::AppBuilder : Rails::AppBuilder
++      end
++    end
++
++    # This class handles preparation of the arguments before the AppGenerator is
++    # called. The class provides version or help information if they were
++    # requested, and also constructs the railsrc file (used for extra configuration
++    # options).
++    #
++    # This class should be called before the AppGenerator is required and started
++    # since it configures and mutates ARGV correctly.
++    class ARGVScrubber # :nodoc:
++      def initialize(argv = ARGV)
++        @argv = argv
++      end
++
++      def prepare!
++        handle_version_request!(@argv.first)
++        handle_invalid_command!(@argv.first, @argv) do
++          handle_rails_rc!(@argv.drop(1))
++        end
++      end
++
++      def self.default_rc_file
++        xdg_config_home = ENV["XDG_CONFIG_HOME"].presence || "~/.config"
++        xdg_railsrc = File.expand_path("rails/railsrc", xdg_config_home)
++        if File.exist?(xdg_railsrc)
++          xdg_railsrc
++        else
++          File.expand_path("~/.railsrc")
++        end
++      end
++
++      private
++        def handle_version_request!(argument)
++          if ["--version", "-v"].include?(argument)
++            require "rails/version"
++            puts "Rails #{Rails::VERSION::STRING}"
++            exit(0)
++          end
++        end
++
++        def handle_invalid_command!(argument, argv)
++          if argument == "new"
++            yield
++          else
++            ["--help"] + argv.drop(1)
++          end
++        end
++
++        def handle_rails_rc!(argv)
++          if argv.find { |arg| arg == "--no-rc" }
++            argv.reject { |arg| arg == "--no-rc" }
++          else
++            railsrc(argv) { |rc_argv, rc| insert_railsrc_into_argv!(rc_argv, rc) }
++          end
++        end
++
++        def railsrc(argv)
++          if (customrc = argv.index { |x| x.include?("--rc=") })
++            fname = File.expand_path(argv[customrc].gsub(/--rc=/, ""))
++            yield(argv.take(customrc) + argv.drop(customrc + 1), fname)
++          else
++            yield argv, self.class.default_rc_file
++          end
++        end
++
++        def read_rc_file(railsrc)
++          extra_args = File.readlines(railsrc).flat_map(&:split)
++          puts "Using #{extra_args.join(" ")} from #{railsrc}"
++          extra_args
++        end
++
++        def insert_railsrc_into_argv!(argv, railsrc)
++          return argv unless File.exist?(railsrc)
++          extra_args = read_rc_file railsrc
++          argv.take(1) + extra_args + argv.drop(1)
++        end
++    end
++  end
++end
+diff --git a/apple-touch-icon-precomposed.png b/apple-touch-icon-precomposed.png
+new file mode 100644
+index 00000000000..e69de29bb2d
+diff --git a/apple-touch-icon.png b/apple-touch-icon.png
+new file mode 100644
+index 00000000000..e69de29bb2d
+diff --git a/application.rb.tt b/application.rb.tt
+new file mode 100644
+index 00000000000..aefca77a711
+--- /dev/null
++++ b/application.rb.tt
+@@ -0,0 +1,53 @@
++require_relative "boot"
++
++<% if include_all_railties? -%>
++require "rails/all"
++<% else -%>
++require "rails"
++# Pick the frameworks you want:
++require "active_model/railtie"
++<%= comment_if :skip_active_job %>require "active_job/railtie"
++<%= comment_if :skip_active_record %>require "active_record/railtie"
++<%= comment_if :skip_active_storage %>require "active_storage/engine"
++require "action_controller/railtie"
++<%= comment_if :skip_action_mailer %>require "action_mailer/railtie"
++<%= comment_if :skip_action_mailbox %>require "action_mailbox/engine"
++<%= comment_if :skip_action_text %>require "action_text/engine"
++require "action_view/railtie"
++<%= comment_if :skip_action_cable %>require "action_cable/engine"
++<%= comment_if :skip_test %>require "rails/test_unit/railtie"
++<% end -%>
++
++# Require the gems listed in Gemfile, including any gems
++# you've limited to :test, :development, or :production.
++Bundler.require(*Rails.groups)
++
++module <%= app_const_base %>
++  class Application < Rails::Application
++<%- if !options.dummy_app? -%>
++    # Initialize configuration defaults for originally generated Rails version.
++    config.load_defaults <%= build(:config_target_version) %>
++<%- else -%>
++    config.load_defaults Rails::VERSION::STRING.to_f
++<%- end -%>
++
++    # Configuration for the application, engines, and railties goes here.
++    #
++    # These settings can be overridden in specific environments using the files
++    # in config/environments, which are processed later.
++    #
++    # config.time_zone = "Central Time (US & Canada)"
++    # config.eager_load_paths << Rails.root.join("extras")
++<%- if options.api? -%>
++
++    # Only loads a smaller set of middleware suitable for API only apps.
++    # Middleware like session, flash, cookies can be added back manually.
++    # Skip views, helpers and assets when generating a new resource.
++    config.api_only = true
++<%- elsif !depends_on_system_test? -%>
++
++    # Don't generate system test files.
++    config.generators.system_tests = nil
++<%- end -%>
++  end
++end
+diff --git a/application_controller.rb.tt b/application_controller.rb.tt
+new file mode 100644
+index 00000000000..1efc6f86118
+--- /dev/null
++++ b/application_controller.rb.tt
+@@ -0,0 +1,5 @@
++<%= wrap_in_modules <<~rb
++  class ApplicationController < ActionController::#{api? ? "API" : "Base"}
++  end
++rb
++%>
+diff --git a/application_record_generator.rb b/application_record_generator.rb
+new file mode 100644
+index 00000000000..f6b6e76b1d0
+--- /dev/null
++++ b/application_record_generator.rb
+@@ -0,0 +1,9 @@
++# frozen_string_literal: true
++
++module Rails
++  module Generators
++    class ApplicationRecordGenerator < Base # :nodoc:
++      hook_for :orm, required: true, desc: "ORM to be invoked"
++    end
++  end
++end
+diff --git a/assets.rb.tt b/assets.rb.tt
+new file mode 100644
+index 00000000000..2eeef966fe8
+--- /dev/null
++++ b/assets.rb.tt
+@@ -0,0 +1,12 @@
++# Be sure to restart your server when you modify this file.
++
++# Version of your assets, change this if you want to expire all your assets.
++Rails.application.config.assets.version = "1.0"
++
++# Add additional assets to the asset load path.
++# Rails.application.config.assets.paths << Emoji.images_path
++
++# Precompile additional assets.
++# application.js, application.css, and all non-JS/CSS in the app/assets
++# folder are already added.
++# Rails.application.config.assets.precompile += %w( admin.js admin.css )
+diff --git a/benchmark.rb.tt b/benchmark.rb.tt
+new file mode 100644
+index 00000000000..318dead1e10
+--- /dev/null
++++ b/benchmark.rb.tt
+@@ -0,0 +1,15 @@
++# frozen_string_literal: true
++
++require_relative "../../config/environment"
++
++# Any benchmarking setup goes here...
++
++
++
++Benchmark.ips do |x|
++<%- reports.each do |report| -%>
++  x.report("<%= report %>") { }
++<%- end -%>
++
++  x.compare!
++end
+diff --git a/benchmark_generator.rb b/benchmark_generator.rb
+new file mode 100644
+index 00000000000..7c76d6551c7
+--- /dev/null
++++ b/benchmark_generator.rb
+@@ -0,0 +1,29 @@
++# frozen_string_literal: true
++
++require "rails/generators/named_base"
++
++module Rails
++  module Generators
++    class BenchmarkGenerator < NamedBase
++      IPS_GEM_NAME = "benchmark-ips"
++
++      argument :reports, type: :array, default: ["before", "after"]
++
++      def generate_layout
++        add_ips_to_gemfile unless ips_installed?
++        template("benchmark.rb.tt", "script/benchmarks/#{file_name}.rb")
++      end
++
++    private
++      def add_ips_to_gemfile
++        gem(IPS_GEM_NAME, group: [:development, :test])
++      end
++
++      def ips_installed?
++        in_root do
++          return File.read("Gemfile").match?(/gem.*\b#{IPS_GEM_NAME}\b.*/)
++        end
++      end
++    end
++  end
++end
+diff --git a/boot.rb.tt b/boot.rb.tt
+index 116591a4ed5..9e4ad8dbdeb 100644
+--- a/boot.rb.tt
++++ b/boot.rb.tt
+@@ -1,5 +1,6 @@
+-# Set up gems listed in the Gemfile.
+-ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../../Gemfile", __dir__)
++ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../Gemfile", __dir__)
+ 
+-require "bundler/setup" if File.exist?(ENV["BUNDLE_GEMFILE"])
+-$LOAD_PATH.unshift File.expand_path("../../../lib", __dir__)
++require "bundler/setup" # Set up gems listed in the Gemfile.
++<% if depend_on_bootsnap? -%>
++require "bootsnap/setup" # Speed up boot time by caching expensive operations.
++<%- end -%>
+diff --git a/cable.yml.tt b/cable.yml.tt
+new file mode 100644
+index 00000000000..f69dc91b928
+--- /dev/null
++++ b/cable.yml.tt
+@@ -0,0 +1,10 @@
++development:
++  adapter: async
++
++test:
++  adapter: test
++
++production:
++  adapter: redis
++  url: <%%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
++  channel_prefix: <%= app_name %>_production
+diff --git a/change_generator.rb b/change_generator.rb
+new file mode 100644
+index 00000000000..3187c66ad7b
+--- /dev/null
++++ b/change_generator.rb
+@@ -0,0 +1,65 @@
++# frozen_string_literal: true
++
++require "rails/generators/base"
++
++module Rails
++  module Generators
++    module Db
++      module System
++        class ChangeGenerator < Base # :nodoc:
++          include Database
++          include AppName
++
++          class_option :to, required: true,
++            desc: "The database system to switch to."
++
++          def self.default_generator_root
++            path = File.expand_path(File.join(base_name, "app"), base_root)
++            path if File.exist?(path)
++          end
++
++          def initialize(*)
++            super
++
++            unless DATABASES.include?(options[:to])
++              raise Error, "Invalid value for --to option. Supported preconfigurations are: #{DATABASES.join(", ")}."
++            end
++
++            opt = options.dup
++            opt[:database] ||= opt[:to]
++            self.options = opt.freeze
++          end
++
++          def edit_database_config
++            template("config/databases/#{options[:database]}.yml", "config/database.yml")
++          end
++
++          def edit_gemfile
++            name, version = gem_for_database
++            gsub_file("Gemfile", all_database_gems_regex, name)
++            gsub_file("Gemfile", gem_entry_regex_for(name), gem_entry_for(name, *version))
++          end
++
++          private
++            def all_database_gems
++              DATABASES.map { |database| gem_for_database(database) }
++            end
++
++            def all_database_gems_regex
++              all_database_gem_names = all_database_gems.map(&:first)
++              /(\b#{all_database_gem_names.join('\b|\b')}\b)/
++            end
++
++            def gem_entry_regex_for(gem_name)
++              /^gem.*\b#{gem_name}\b.*/
++            end
++
++            def gem_entry_for(*gem_name_and_version)
++              gem_name_and_version.map! { |segment| "\"#{segment}\"" }
++              "gem #{gem_name_and_version.join(", ")}"
++            end
++        end
++      end
++    end
++  end
++end
+diff --git a/config.ru.tt b/config.ru.tt
+new file mode 100644
+index 00000000000..4a3c09a6889
+--- /dev/null
++++ b/config.ru.tt
+@@ -0,0 +1,6 @@
++# This file is used by Rack-based servers to start the application.
++
++require_relative "config/environment"
++
++run Rails.application
++Rails.application.load_server
+diff --git a/connection_test.rb.tt b/connection_test.rb.tt
+new file mode 100644
+index 00000000000..800405f15e6
+--- /dev/null
++++ b/connection_test.rb.tt
+@@ -0,0 +1,11 @@
++require "test_helper"
++
++class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCase
++  # test "connects with cookies" do
++  #   cookies.signed[:user_id] = 42
++  #
++  #   connect
++  #
++  #   assert_equal connection.user_id, "42"
++  # end
++end
+diff --git a/content_security_policy.rb.tt b/content_security_policy.rb.tt
+new file mode 100644
+index 00000000000..54f47cf15fe
+--- /dev/null
++++ b/content_security_policy.rb.tt
+@@ -0,0 +1,25 @@
++# Be sure to restart your server when you modify this file.
++
++# Define an application-wide content security policy.
++# See the Securing Rails Applications Guide for more information:
++# https://guides.rubyonrails.org/security.html#content-security-policy-header
++
++# Rails.application.configure do
++#   config.content_security_policy do |policy|
++#     policy.default_src :self, :https
++#     policy.font_src    :self, :https, :data
++#     policy.img_src     :self, :https, :data
++#     policy.object_src  :none
++#     policy.script_src  :self, :https
++#     policy.style_src   :self, :https
++#     # Specify URI for violation reports
++#     # policy.report_uri "/csp-violation-report-endpoint"
++#   end
++#
++#   # Generate session nonces for permitted importmap and inline scripts
++#   config.content_security_policy_nonce_generator = ->(request) { request.session.id.to_s }
++#   config.content_security_policy_nonce_directives = %w(script-src)
++#
++#   # Report violations without enforcing the policy.
++#   # config.content_security_policy_report_only = true
++# end
+diff --git a/controller.rb.tt b/controller.rb.tt
+index 382aeecf27a..52243f4a2f9 100644
+--- a/controller.rb.tt
++++ b/controller.rb.tt
+@@ -1,64 +1,9 @@
+ <% module_namespacing do -%>
+-class <%= controller_class_name %>Controller < ApplicationController
+-  before_action :set_<%= singular_table_name %>, only: %i[ show edit update destroy ]
+-
+-  # GET <%= route_url %>
+-  def index
+-    @<%= plural_table_name %> = <%= orm_class.all(class_name) %>
++class <%= class_name %>Controller < ApplicationController
++<% actions.each do |action| -%>
++  def <%= action %>
+   end
+-
+-  # GET <%= route_url %>/1
+-  def show
+-  end
+-
+-  # GET <%= route_url %>/new
+-  def new
+-    @<%= singular_table_name %> = <%= orm_class.build(class_name) %>
+-  end
+-
+-  # GET <%= route_url %>/1/edit
+-  def edit
+-  end
+-
+-  # POST <%= route_url %>
+-  def create
+-    @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
+-
+-    if @<%= orm_instance.save %>
+-      redirect_to <%= redirect_resource_name %>, notice: <%= %("#{human_name} was successfully created.") %>
+-    else
+-      render :new, status: :unprocessable_entity
+-    end
+-  end
+-
+-  # PATCH/PUT <%= route_url %>/1
+-  def update
+-    if @<%= orm_instance.update("#{singular_table_name}_params") %>
+-      redirect_to <%= redirect_resource_name %>, notice: <%= %("#{human_name} was successfully updated.") %>
+-    else
+-      render :edit, status: :unprocessable_entity
+-    end
+-  end
+-
+-  # DELETE <%= route_url %>/1
+-  def destroy
+-    @<%= orm_instance.destroy %>
+-    redirect_to <%= index_helper %>_url, notice: <%= %("#{human_name} was successfully destroyed.") %>
+-  end
+-
+-  private
+-    # Use callbacks to share common setup or constraints between actions.
+-    def set_<%= singular_table_name %>
+-      @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+-    end
+-
+-    # Only allow a list of trusted parameters through.
+-    def <%= "#{singular_table_name}_params" %>
+-      <%- if attributes_names.empty? -%>
+-      params.fetch(:<%= singular_table_name %>, {})
+-      <%- else -%>
+-      params.require(:<%= singular_table_name %>).permit(<%= permitted_params %>)
+-      <%- end -%>
+-    end
++<%= "\n" unless action == actions.last -%>
++<% end -%>
+ end
+ <% end -%>
+diff --git a/controller_generator.rb b/controller_generator.rb
+index 8e13744b2a0..a2bfdb45b9b 100644
+--- a/controller_generator.rb
++++ b/controller_generator.rb
+@@ -1,24 +1,37 @@
+ # frozen_string_literal: true
+ 
+-require "rails/generators/erb"
+-
+-module Erb # :nodoc:
+-  module Generators # :nodoc:
+-    class ControllerGenerator < Base # :nodoc:
++module Rails
++  module Generators
++    class ControllerGenerator < NamedBase # :nodoc:
+       argument :actions, type: :array, default: [], banner: "action action"
++      class_option :skip_routes, type: :boolean, desc: "Don't add routes to config/routes.rb."
++      class_option :helper, type: :boolean
+ 
+-      def copy_view_files
+-        base_path = File.join("app/views", class_path, file_name)
+-        empty_directory base_path
++      check_class_collision suffix: "Controller"
+ 
+-        actions.each do |action|
+-          @action = action
+-          formats.each do |format|
+-            @path = File.join(base_path, filename_with_extensions(action, format))
+-            template filename_with_extensions(:view, format), @path
+-          end
+-        end
++      def create_controller_files
++        template "controller.rb", File.join("app/controllers", class_path, "#{file_name}_controller.rb")
++      end
++
++      def add_routes
++        return if options[:skip_routes]
++        return if actions.empty?
++        routing_code = actions.map { |action| "get '#{file_name}/#{action}'" }.join("\n")
++        route routing_code, namespace: regular_class_path
++      end
++
++      hook_for :template_engine, :test_framework, :helper do |generator|
++        invoke generator, [ remove_possible_suffix(name), actions ]
+       end
++
++      private
++        def file_name
++          @_file_name ||= remove_possible_suffix(super)
++        end
++
++        def remove_possible_suffix(name)
++          name.sub(/_?controller$/i, "")
++        end
+     end
+   end
+ end
+diff --git a/cors.rb.tt b/cors.rb.tt
+new file mode 100644
+index 00000000000..e5a82f162c4
+--- /dev/null
++++ b/cors.rb.tt
+@@ -0,0 +1,16 @@
++# Be sure to restart your server when you modify this file.
++
++# Avoid CORS issues when API is called from the frontend app.
++# Handle Cross-Origin Resource Sharing (CORS) in order to accept cross-origin AJAX requests.
++
++# Read more: https://github.com/cyu/rack-cors
++
++# Rails.application.config.middleware.insert_before 0, Rack::Cors do
++#   allow do
++#     origins "example.com"
++#
++#     resource "*",
++#       headers: :any,
++#       methods: [:get, :post, :put, :patch, :delete, :options, :head]
++#   end
++# end
+diff --git a/credentials_generator.rb b/credentials_generator.rb
+new file mode 100644
+index 00000000000..719e0c1e4ca
+--- /dev/null
++++ b/credentials_generator.rb
+@@ -0,0 +1,56 @@
++# frozen_string_literal: true
++
++require "rails/generators/base"
++require "rails/generators/rails/master_key/master_key_generator"
++require "active_support/encrypted_configuration"
++
++module Rails
++  module Generators
++    class CredentialsGenerator < Base # :nodoc:
++      def add_credentials_file
++        unless credentials.content_path.exist?
++          template = credentials_template
++
++          say "Adding #{credentials.content_path} to store encrypted credentials."
++          say ""
++          say "The following content has been encrypted with the Rails master key:"
++          say ""
++          say template, :on_green
++          say ""
++
++          add_credentials_file_silently(template)
++
++          say "You can edit encrypted credentials with `bin/rails credentials:edit`."
++          say ""
++        end
++      end
++
++      def add_credentials_file_silently(template = nil)
++        unless credentials.content_path.exist?
++          credentials.write(credentials_template)
++        end
++      end
++
++      private
++        def credentials
++          ActiveSupport::EncryptedConfiguration.new(
++            config_path: "config/credentials.yml.enc",
++            key_path: "config/master.key",
++            env_key: "RAILS_MASTER_KEY",
++            raise_if_missing_key: true
++          )
++        end
++
++        def credentials_template
++          <<~YAML
++            # aws:
++            #   access_key_id: 123
++            #   secret_access_key: 345
++
++            # Used as the base secret for all MessageVerifiers in Rails, including the one protecting cookies.
++            secret_key_base: #{SecureRandom.hex(64)}
++          YAML
++        end
++    end
++  end
++end
+diff --git a/development.rb.tt b/development.rb.tt
+new file mode 100644
+index 00000000000..38430f72b4c
+--- /dev/null
++++ b/development.rb.tt
+@@ -0,0 +1,80 @@
++require "active_support/core_ext/integer/time"
++
++Rails.application.configure do
++  # Settings specified here will take precedence over those in config/application.rb.
++
++  # In the development environment your application's code is reloaded any time
++  # it changes. This slows down response time but is perfect for development
++  # since you don't have to restart the web server when you make code changes.
++  config.cache_classes = false
++
++  # Do not eager load code on boot.
++  config.eager_load = false
++
++  # Show full error reports.
++  config.consider_all_requests_local = true
++
++  # Enable server timing
++  config.server_timing = true
++
++  # Enable/disable caching. By default caching is disabled.
++  # Run rails dev:cache to toggle caching.
++  if Rails.root.join("tmp/caching-dev.txt").exist?
++    <%- unless options.api? -%>
++    config.action_controller.perform_caching = true
++    config.action_controller.enable_fragment_cache_logging = true
++
++    <%- end -%>
++    config.cache_store = :memory_store
++    config.public_file_server.headers = {
++      "Cache-Control" => "public, max-age=#{2.days.to_i}"
++    }
++  else
++    config.action_controller.perform_caching = false
++
++    config.cache_store = :null_store
++  end
++  <%- unless skip_active_storage? -%>
++
++  # Store uploaded files on the local file system (see config/storage.yml for options).
++  config.active_storage.service = :local
++  <%- end -%>
++  <%- unless options.skip_action_mailer? -%>
++
++  # Don't care if the mailer can't send.
++  config.action_mailer.raise_delivery_errors = false
++
++  config.action_mailer.perform_caching = false
++  <%- end -%>
++
++  # Print deprecation notices to the Rails logger.
++  config.active_support.deprecation = :log
++
++  # Raise exceptions for disallowed deprecations.
++  config.active_support.disallowed_deprecation = :raise
++
++  # Tell Active Support which deprecation messages to disallow.
++  config.active_support.disallowed_deprecation_warnings = []
++
++  <%- unless options.skip_active_record? -%>
++  # Raise an error on page load if there are pending migrations.
++  config.active_record.migration_error = :page_load
++
++  # Highlight code that triggered database queries in logs.
++  config.active_record.verbose_query_logs = true
++
++  <%- end -%>
++  <%- unless skip_sprockets? -%>
++  # Suppress logger output for asset requests.
++  config.assets.quiet = true
++  <%- end -%>
++
++  # Raises error for missing translations.
++  # config.i18n.raise_on_missing_translations = true
++
++  # Annotate rendered view with file names.
++  # config.action_view.annotate_rendered_view_with_filenames = true
++
++  # Uncomment if you wish to allow Action Cable access from any origin.
++  # config.action_cable.disable_request_forgery_protection = true
++end
+diff --git a/en.yml b/en.yml
+new file mode 100644
+index 00000000000..8ca56fc74f3
+--- /dev/null
++++ b/en.yml
+@@ -0,0 +1,33 @@
++# Files in the config/locales directory are used for internationalization
++# and are automatically loaded by Rails. If you want to use locales other
++# than English, add the necessary files in this directory.
++#
++# To use the locales, use `I18n.t`:
++#
++#     I18n.t "hello"
++#
++# In views, this is aliased to just `t`:
++#
++#     <%= t("hello") %>
++#
++# To use a different locale, set it with `I18n.locale`:
++#
++#     I18n.locale = :es
++#
++# This would use the information in config/locales/es.yml.
++#
++# The following keys must be escaped otherwise they will not be retrieved by
++# the default I18n backend:
++#
++# true, false, on, off, yes, no
++#
++# Instead, surround them with single quotes.
++#
++# en:
++#   "true": "foo"
++#
++# To learn more, please read the Rails Internationalization guide
++# available at https://guides.rubyonrails.org/i18n.html.
++
++en:
++  hello: "Hello world"
+diff --git a/encrypted_file_generator.rb b/encrypted_file_generator.rb
+new file mode 100644
+index 00000000000..145df4aa46e
+--- /dev/null
++++ b/encrypted_file_generator.rb
+@@ -0,0 +1,31 @@
++# frozen_string_literal: true
++
++require "rails/generators/base"
++require "active_support/encrypted_file"
++
++module Rails
++  module Generators
++    class EncryptedFileGenerator < Base # :nodoc:
++      def add_encrypted_file_silently(file_path, key_path, template = encrypted_file_template)
++        unless File.exist?(file_path)
++          ActiveSupport::EncryptedFile.new(
++            content_path: file_path,
++            key_path: key_path,
++            env_key: "RAILS_MASTER_KEY",
++            raise_if_missing_key: true
++          ).write(template)
++        end
++      end
++
++      private
++        def encrypted_file_template
++          <<~YAML
++            # aws:
++            #   access_key_id: 123
++            #   secret_access_key: 345
++
++          YAML
++        end
++    end
++  end
++end
+diff --git a/encryption_key_file_generator.rb b/encryption_key_file_generator.rb
+new file mode 100644
+index 00000000000..e2359e9deda
+--- /dev/null
++++ b/encryption_key_file_generator.rb
+@@ -0,0 +1,58 @@
++# frozen_string_literal: true
++
++require "pathname"
++require "rails/generators/base"
++require "active_support/encrypted_file"
++
++module Rails
++  module Generators
++    class EncryptionKeyFileGenerator < Base # :nodoc:
++      def add_key_file(key_path)
++        key_path = Pathname.new(key_path)
++
++        unless key_path.exist?
++          key = ActiveSupport::EncryptedFile.generate_key
++
++          log "Adding #{key_path} to store the encryption key: #{key}"
++          log ""
++          log "Save this in a password manager your team can access."
++          log ""
++          log "If you lose the key, no one, including you, can access anything encrypted with it."
++
++          log ""
++          add_key_file_silently(key_path, key)
++          log ""
++        end
++      end
++
++      def add_key_file_silently(key_path, key = nil)
++        create_file key_path, key || ActiveSupport::EncryptedFile.generate_key
++        key_path.chmod 0600
++      end
++
++      def ignore_key_file(key_path, ignore: key_ignore(key_path))
++        if File.exist?(".gitignore")
++          unless File.read(".gitignore").include?(ignore)
++            log "Ignoring #{key_path} so it won't end up in Git history:"
++            log ""
++            append_to_file ".gitignore", ignore
++            log ""
++          end
++        else
++          log "IMPORTANT: Don't commit #{key_path}. Add this to your ignore file:"
++          log ignore, :on_green
++          log ""
++        end
++      end
++
++      def ignore_key_file_silently(key_path, ignore: key_ignore(key_path))
++        append_to_file ".gitignore", ignore if File.exist?(".gitignore")
++      end
++
++      private
++        def key_ignore(key_path)
++          [ "", "/#{key_path}", "" ].join("\n")
++        end
++    end
++  end
++end
+diff --git a/environment.rb.tt b/environment.rb.tt
+new file mode 100644
+index 00000000000..cac53157752
+--- /dev/null
++++ b/environment.rb.tt
+@@ -0,0 +1,5 @@
++# Load the Rails application.
++require_relative "application"
++
++# Initialize the Rails application.
++Rails.application.initialize!
+diff --git a/favicon.ico b/favicon.ico
+new file mode 100644
+index 00000000000..e69de29bb2d
+diff --git a/filter_parameter_logging.rb.tt b/filter_parameter_logging.rb.tt
+new file mode 100644
+index 00000000000..adc6568ce83
+--- /dev/null
++++ b/filter_parameter_logging.rb.tt
+@@ -0,0 +1,8 @@
++# Be sure to restart your server when you modify this file.
++
++# Configure parameters to be filtered from the log file. Use this to limit dissemination of
++# sensitive information. See the ActiveSupport::ParameterFilter documentation for supported
++# notations and behaviors.
++Rails.application.config.filter_parameters += [
++  :passw, :secret, :token, :_key, :crypt, :salt, :certificate, :otp, :ssn
++]
+diff --git a/generator_generator.rb b/generator_generator.rb
+new file mode 100644
+index 00000000000..b0146641b43
+--- /dev/null
++++ b/generator_generator.rb
+@@ -0,0 +1,27 @@
++# frozen_string_literal: true
++
++module Rails
++  module Generators
++    class GeneratorGenerator < NamedBase # :nodoc:
++      check_class_collision suffix: "Generator"
++
++      class_option :namespace, type: :boolean, default: true,
++                               desc: "Namespace generator under lib/generators/name"
++
++      def create_generator_files
++        directory ".", generator_dir
++      end
++
++      hook_for :test_framework
++
++      private
++        def generator_dir
++          if options[:namespace]
++            File.join("lib", "generators", regular_class_path, file_name)
++          else
++            File.join("lib", "generators", regular_class_path)
++          end
++        end
++    end
++  end
++end
+diff --git a/gitattributes.tt b/gitattributes.tt
+new file mode 100644
+index 00000000000..9c12fe8ff5d
+--- /dev/null
++++ b/gitattributes.tt
+@@ -0,0 +1,9 @@
++# See https://git-scm.com/docs/gitattributes for more about git attribute files.
++
++<% unless options[:skip_active_record] -%>
++# Mark the database schema as having been generated.
++db/schema.rb linguist-generated
++<% end -%>
++
++# Mark any vendored files as having been vendored.
++vendor/* linguist-vendored
+diff --git a/gitignore.tt b/gitignore.tt
+index 294c79fea22..27c3be44149 100644
+--- a/gitignore.tt
++++ b/gitignore.tt
+@@ -1,16 +1,42 @@
+-/.bundle/
+-/doc/
+-/log/*.log
+-/pkg/
+-/tmp/
+-<% if with_dummy_app? -%>
++# See https://help.github.com/articles/ignoring-files for more about ignoring files.
++#
++# If you find yourself ignoring temporary files generated by your text editor
++# or operating system, you probably want to add a global ignore instead:
++#   git config --global core.excludesfile '~/.gitignore_global'
++
++# Ignore bundler config.
++/.bundle
++
+ <% if sqlite3? -%>
+-/<%= dummy_path %>/db/*.sqlite3
+-/<%= dummy_path %>/db/*.sqlite3-*
++# Ignore the default SQLite database.
++/db/*.sqlite3
++/db/*.sqlite3-*
++
+ <% end -%>
+-/<%= dummy_path %>/log/*.log
++# Ignore all logfiles and tempfiles.
++/log/*
++/tmp/*
++<% if keeps? -%>
++!/log/.keep
++!/tmp/.keep
++
++# Ignore pidfiles, but keep the directory.
++/tmp/pids/*
++!/tmp/pids/
++!/tmp/pids/.keep
++<% end -%>
++
+ <% unless skip_active_storage? -%>
+-/<%= dummy_path %>/storage/
++# Ignore uploaded files in development.
++/storage/*
++<% if keeps? -%>
++!/storage/.keep
++/tmp/storage/*
++!/tmp/storage/
++!/tmp/storage/.keep
++<% end -%>
+ <% end -%>
+-/<%= dummy_path %>/tmp/
++<% unless options.api? -%>
++
++/public/assets
+ <% end -%>
+diff --git a/helper.rb.tt b/helper.rb.tt
+new file mode 100644
+index 00000000000..b4173151b4a
+--- /dev/null
++++ b/helper.rb.tt
+@@ -0,0 +1,4 @@
++<% module_namespacing do -%>
++module <%= class_name %>Helper
++end
++<% end -%>
+diff --git a/helper_generator.rb b/helper_generator.rb
+new file mode 100644
+index 00000000000..542eb4c9e8a
+--- /dev/null
++++ b/helper_generator.rb
+@@ -0,0 +1,20 @@
++# frozen_string_literal: true
++
++module Rails
++  module Generators
++    class HelperGenerator < NamedBase # :nodoc:
++      check_class_collision suffix: "Helper"
++
++      def create_helper_files
++        template "helper.rb", File.join("app/helpers", class_path, "#{file_name}_helper.rb")
++      end
++
++      hook_for :test_framework
++
++      private
++        def file_name
++          @_file_name ||= super.sub(/_helper\z/i, "")
++        end
++    end
++  end
++end
+diff --git a/inflections.rb.tt b/inflections.rb.tt
+new file mode 100644
+index 00000000000..3860f659ead
+--- /dev/null
++++ b/inflections.rb.tt
+@@ -0,0 +1,16 @@
++# Be sure to restart your server when you modify this file.
++
++# Add new inflection rules using the following format. Inflections
++# are locale specific, and you may define rules for as many different
++# locales as you wish. All of these examples are active by default:
++# ActiveSupport::Inflector.inflections(:en) do |inflect|
++#   inflect.plural /^(ox)$/i, "\\1en"
++#   inflect.singular /^(ox)en/i, "\\1"
++#   inflect.irregular "person", "people"
++#   inflect.uncountable %w( fish sheep )
++# end
++
++# These inflection rules are supported but not enabled by default:
++# ActiveSupport::Inflector.inflections(:en) do |inflect|
++#   inflect.acronym "RESTful"
++# end
+diff --git a/integration_test_generator.rb b/integration_test_generator.rb
+new file mode 100644
+index 00000000000..975dd8b90c1
+--- /dev/null
++++ b/integration_test_generator.rb
+@@ -0,0 +1,9 @@
++# frozen_string_literal: true
++
++module Rails
++  module Generators
++    class IntegrationTestGenerator < NamedBase # :nodoc:
++      hook_for :integration_tool, as: :integration
++    end
++  end
++end
+diff --git a/jdbc.yml.tt b/jdbc.yml.tt
+new file mode 100644
+index 00000000000..ed876067498
+--- /dev/null
++++ b/jdbc.yml.tt
+@@ -0,0 +1,68 @@
++# If you are using mssql, derby, hsqldb, or h2 with one of the
++# ActiveRecord JDBC adapters, install the appropriate driver, e.g.,:
++#   gem install activerecord-jdbcmssql-adapter
++#
++# Configure using Gemfile:
++#   gem "activerecord-jdbcmssql-adapter"
++#
++# development:
++#   adapter: mssql
++#   username: <%= app_name %>
++#   password:
++#   host: localhost
++#   database: <%= app_name %>_development
++#
++# Warning: The database defined as "test" will be erased and
++# re-generated from your development database when you run "rake".
++# Do not set this db to the same as development or production.
++#
++# test:
++#   adapter: mssql
++#   username: <%= app_name %>
++#   password:
++#   host: localhost
++#   database: <%= app_name %>_test
++#
++# production:
++#   adapter: mssql
++#   username: <%= app_name %>
++#   password:
++#   host: localhost
++#   database: <%= app_name %>_production
++
++# If you are using oracle, db2, sybase, informix or prefer to use the plain
++# JDBC adapter, configure your database setting as the example below (requires
++# you to download and manually install the database vendor's JDBC driver .jar
++# file). See your driver documentation for the appropriate driver class and
++# connection string:
++
++default: &default
++  adapter: jdbc
++  pool: <%%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
++  username: <%= app_name %>
++  password:
++  driver:
++
++development:
++  <<: *default
++  url: jdbc:db://localhost/<%= app_name %>_development
++
++# Warning: The database defined as "test" will be erased and
++# re-generated from your development database when you run "rake".
++# Do not set this db to the same as development or production.
++test:
++  <<: *default
++  url: jdbc:db://localhost/<%= app_name %>_test
++
++# As with config/credentials.yml, you never want to store sensitive information,
++# like your database password, in your source code. If your source code is
++# ever seen by anyone, they now have access to your database.
++#
++# Instead, provide the password as an environment variable when you boot the
++# app. Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
++# for a full overview on how database connection configuration can be specified.
++#
++production:
++  url: jdbc:db://localhost/<%= app_name %>_production
++  username: <%= app_name %>
++  password: <%%= ENV["<%= app_name.upcase %>_DATABASE_PASSWORD"] %>
+diff --git a/jdbcmysql.yml.tt b/jdbcmysql.yml.tt
+new file mode 100644
+index 00000000000..7b3b100e42e
+--- /dev/null
++++ b/jdbcmysql.yml.tt
+@@ -0,0 +1,54 @@
++# MySQL. Versions 5.5.8 and up are supported.
++#
++# Install the MySQL driver:
++#   gem install activerecord-jdbcmysql-adapter
++#
++# Configure Using Gemfile
++# gem "activerecord-jdbcmysql-adapter"
++#
++# And be sure to use new-style password hashing:
++#   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
++#
++default: &default
++  adapter: mysql
++  pool: <%%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
++  username: root
++  password:
++  host: localhost
++
++development:
++  <<: *default
++  database: <%= app_name %>_development
++
++# Warning: The database defined as "test" will be erased and
++# re-generated from your development database when you run "rake".
++# Do not set this db to the same as development or production.
++test:
++  <<: *default
++  database: <%= app_name %>_test
++
++# As with config/credentials.yml, you never want to store sensitive information,
++# like your database password, in your source code. If your source code is
++# ever seen by anyone, they now have access to your database.
++#
++# Instead, provide the password or a full connection URL as an environment
++# variable when you boot the app. For example:
++#
++#   DATABASE_URL="mysql://myuser:mypass@localhost/somedatabase"
++#
++# If the connection URL is provided in the special DATABASE_URL environment
++# variable, Rails will automatically merge its configuration values on top of
++# the values provided in this file. Alternatively, you can specify a connection
++# URL environment variable explicitly:
++#
++#   production:
++#     url: <%%= ENV["MY_APP_DATABASE_URL"] %>
++#
++# Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
++# for a full overview on how database connection configuration can be specified.
++#
++production:
++  <<: *default
++  database: <%= app_name %>_production
++  username: <%= app_name %>
++  password: <%%= ENV["<%= app_name.upcase %>_DATABASE_PASSWORD"] %>
+diff --git a/jdbcpostgresql.yml.tt b/jdbcpostgresql.yml.tt
+new file mode 100644
+index 00000000000..40261ec9fa6
+--- /dev/null
++++ b/jdbcpostgresql.yml.tt
+@@ -0,0 +1,70 @@
++# PostgreSQL. Versions 9.3 and up are supported.
++#
++# Configure Using Gemfile
++# gem "activerecord-jdbcpostgresql-adapter"
++#
++default: &default
++  adapter: postgresql
++  encoding: unicode
++  pool: <%%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
++
++development:
++  <<: *default
++  database: <%= app_name %>_development
++
++  # The specified database role being used to connect to postgres.
++  # To create additional roles in postgres see `$ createuser --help`.
++  # When left blank, postgres will use the default role. This is
++  # the same name as the operating system user running Rails.
++  #username: <%= app_name %>
++
++  # The password associated with the postgres role (username).
++  #password:
++
++  # Connect on a TCP socket. Omitted by default since the client uses a
++  # domain socket that doesn't need configuration. Windows does not have
++  # domain sockets, so uncomment these lines.
++  #host: localhost
++  #port: 5432
++
++  # Schema search path. The server defaults to $user,public
++  #schema_search_path: myapp,sharedapp,public
++
++  # Minimum log levels, in increasing order:
++  #   debug5, debug4, debug3, debug2, debug1,
++  #   log, notice, warning, error, fatal, and panic
++  # Defaults to warning.
++  #min_messages: notice
++
++# Warning: The database defined as "test" will be erased and
++# re-generated from your development database when you run "rake".
++# Do not set this db to the same as development or production.
++test:
++  <<: *default
++  database: <%= app_name %>_test
++
++# As with config/credentials.yml, you never want to store sensitive information,
++# like your database password, in your source code. If your source code is
++# ever seen by anyone, they now have access to your database.
++#
++# Instead, provide the password or a full connection URL as an environment
++# variable when you boot the app. For example:
++#
++#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
++#
++# If the connection URL is provided in the special DATABASE_URL environment
++# variable, Rails will automatically merge its configuration values on top of
++# the values provided in this file. Alternatively, you can specify a connection
++# URL environment variable explicitly:
++#
++#   production:
++#     url: <%%= ENV["MY_APP_DATABASE_URL"] %>
++#
++# Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
++# for a full overview on how database connection configuration can be specified.
++#
++production:
++  <<: *default
++  database: <%= app_name %>_production
++  username: <%= app_name %>
++  password: <%%= ENV["<%= app_name.upcase %>_DATABASE_PASSWORD"] %>
+diff --git a/master_key_generator.rb b/master_key_generator.rb
+new file mode 100644
+index 00000000000..21664ea86de
+--- /dev/null
++++ b/master_key_generator.rb
+@@ -0,0 +1,53 @@
++# frozen_string_literal: true
++
++require "pathname"
++require "rails/generators/base"
++require "rails/generators/rails/encryption_key_file/encryption_key_file_generator"
++require "active_support/encrypted_file"
++
++module Rails
++  module Generators
++    class MasterKeyGenerator < Base # :nodoc:
++      MASTER_KEY_PATH = Pathname.new("config/master.key")
++
++      def add_master_key_file
++        unless MASTER_KEY_PATH.exist?
++          key = ActiveSupport::EncryptedFile.generate_key
++
++          log "Adding #{MASTER_KEY_PATH} to store the master encryption key: #{key}"
++          log ""
++          log "Save this in a password manager your team can access."
++          log ""
++          log "If you lose the key, no one, including you, can access anything encrypted with it."
++
++          log ""
++          add_master_key_file_silently(key)
++          log ""
++        end
++      end
++
++      def add_master_key_file_silently(key = nil)
++        unless MASTER_KEY_PATH.exist?
++          key_file_generator.add_key_file_silently(MASTER_KEY_PATH, key)
++        end
++      end
++
++      def ignore_master_key_file
++        key_file_generator.ignore_key_file(MASTER_KEY_PATH, ignore: key_ignore)
++      end
++
++      def ignore_master_key_file_silently
++        key_file_generator.ignore_key_file_silently(MASTER_KEY_PATH, ignore: key_ignore)
++      end
++
++      private
++        def key_file_generator
++          EncryptionKeyFileGenerator.new([], options)
++        end
++
++        def key_ignore
++          [ "", "# Ignore master key for decrypting credentials and more.", "/#{MASTER_KEY_PATH}", "" ].join("\n")
++        end
++    end
++  end
++end
+diff --git a/migration_generator.rb b/migration_generator.rb
+new file mode 100644
+index 00000000000..c331c135e3b
+--- /dev/null
++++ b/migration_generator.rb
+@@ -0,0 +1,10 @@
++# frozen_string_literal: true
++
++module Rails
++  module Generators
++    class MigrationGenerator < NamedBase # :nodoc:
++      argument :attributes, type: :array, default: [], banner: "field[:type][:index] field[:type][:index]"
++      hook_for :orm, required: true, desc: "ORM to be invoked"
++    end
++  end
++end
+diff --git a/model_generator.rb b/model_generator.rb
+index 3009472c3d1..de4de2cae2a 100644
+--- a/model_generator.rb
++++ b/model_generator.rb
+@@ -1,3 +1,14 @@
+ # frozen_string_literal: true
+ 
+-raise "I should never be loaded"
++require "rails/generators/model_helpers"
++
++module Rails
++  module Generators
++    class ModelGenerator < NamedBase # :nodoc:
++      include Rails::Generators::ModelHelpers
++
++      argument :attributes, type: :array, default: [], banner: "field[:type][:index] field[:type][:index]"
++      hook_for :orm, required: true, desc: "ORM to be invoked"
++    end
++  end
++end
+diff --git a/new_framework_defaults_7_0.rb.tt b/new_framework_defaults_7_0.rb.tt
+new file mode 100644
+index 00000000000..4d580245a57
+--- /dev/null
++++ b/new_framework_defaults_7_0.rb.tt
+@@ -0,0 +1,135 @@
++# Be sure to restart your server when you modify this file.
++#
++# This file eases your Rails 7.0 framework defaults upgrade.
++#
++# Uncomment each configuration one by one to switch to the new default.
++# Once your application is ready to run with all new defaults, you can remove
++# this file and set the `config.load_defaults` to `7.0`.
++#
++# Read the Guide for Upgrading Ruby on Rails for more info on each option.
++# https://guides.rubyonrails.org/upgrading_ruby_on_rails.html
++
++# `button_to` view helper will render `<button>` element, regardless of whether
++# or not the content is passed as the first argument or as a block.
++# Rails.application.config.action_view.button_to_generates_button_tag = true
++
++# `stylesheet_link_tag` view helper will not render the media attribute by default.
++# Rails.application.config.action_view.apply_stylesheet_media_default = false
++
++# Change the digest class for the key generators to `OpenSSL::Digest::SHA256`.
++# Changing this default means invalidate all encrypted messages generated by
++# your application and, all the encrypted cookies. Only change this after you
++# rotated all the messages using the key rotator.
++#
++# See upgrading guide for more information on how to build a rotator.
++# https://guides.rubyonrails.org/v7.0/upgrading_ruby_on_rails.html
++# Rails.application.config.active_support.key_generator_hash_digest_class = OpenSSL::Digest::SHA256
++
++# Change the digest class for ActiveSupport::Digest.
++# Changing this default means that for example Etags change and
++# various cache keys leading to cache invalidation.
++# Rails.application.config.active_support.hash_digest_class = OpenSSL::Digest::SHA256
++
++# Don't override ActiveSupport::TimeWithZone.name and use the default Ruby
++# implementation.
++# Rails.application.config.active_support.remove_deprecated_time_with_zone_name = true
++
++# Calls `Rails.application.executor.wrap` around test cases.
++# This makes test cases behave closer to an actual request or job.
++# Several features that are normally disabled in test, such as Active Record query cache
++# and asynchronous queries will then be enabled.
++# Rails.application.config.active_support.executor_around_test_case = true
++
++# Define the isolation level of most of Rails internal state.
++# If you use a fiber based server or job processor, you should set it to `:fiber`.
++# Otherwise the default of `:thread` if preferable.
++# Rails.application.config.active_support.isolation_level = :thread
++
++# Set both the `:open_timeout` and `:read_timeout` values for `:smtp` delivery method.
++# Rails.application.config.action_mailer.smtp_timeout = 5
++
++# The ActiveStorage video previewer will now use scene change detection to generate
++# better preview images (rather than the previous default of using the first frame
++# of the video).
++# Rails.application.config.active_storage.video_preview_arguments =
++#   "-vf 'select=eq(n\\,0)+eq(key\\,1)+gt(scene\\,0.015),loop=loop=-1:size=2,trim=start_frame=1' -frames:v 1 -f image2"
++
++# Automatically infer `inverse_of` for associations with a scope.
++# Rails.application.config.active_record.automatic_scope_inversing = true
++
++# Raise when running tests if fixtures contained foreign key violations
++# Rails.application.config.active_record.verify_foreign_keys_for_fixtures = true
++
++# Disable partial inserts.
++# This default means that all columns will be referenced in INSERT queries
++# regardless of whether they have a default or not.
++# Rails.application.config.active_record.partial_inserts = false
++
++# Protect from open redirect attacks in `redirect_back_or_to` and `redirect_to`.
++# Rails.application.config.action_controller.raise_on_open_redirects = true
++
++# Change the variant processor for Active Storage.
++# Changing this default means updating all places in your code that
++# generate variants to use image processing macros and ruby-vips
++# operations. See the upgrading guide for detail on the changes required.
++# The `:mini_magick` option is not deprecated; it's fine to keep using it.
++# Rails.application.config.active_storage.variant_processor = :vips
++
++# Enable parameter wrapping for JSON.
++# Previously this was set in an initializer. It's fine to keep using that initializer if you've customized it.
++# To disable parameter wrapping entirely, set this config to `false`.
++# Rails.application.config.action_controller.wrap_parameters_by_default = true
++
++# Specifies whether generated namespaced UUIDs follow the RFC 4122 standard for namespace IDs provided as a
++# `String` to `Digest::UUID.uuid_v3` or `Digest::UUID.uuid_v5` method calls.
++#
++# See https://guides.rubyonrails.org/configuring.html#config-active-support-use-rfc4122-namespaced-uuids for
++# more information.
++# Rails.application.config.active_support.use_rfc4122_namespaced_uuids = true
++
++# Change the default headers to disable browsers' flawed legacy XSS protection.
++# Rails.application.config.action_dispatch.default_headers = {
++#   "X-Frame-Options" => "SAMEORIGIN",
++#   "X-XSS-Protection" => "0",
++#   "X-Content-Type-Options" => "nosniff",
++#   "X-Download-Options" => "noopen",
++#   "X-Permitted-Cross-Domain-Policies" => "none",
++#   "Referrer-Policy" => "strict-origin-when-cross-origin"
++# }
++
++
++# ** Please read carefully, this must be configured in config/application.rb **
++# Change the format of the cache entry.
++# Changing this default means that all new cache entries added to the cache
++# will have a different format that is not supported by Rails 6.1 applications.
++# Only change this value after your application is fully deployed to Rails 7.0
++# and you have no plans to rollback.
++# When you're ready to change format, add this to `config/application.rb` (NOT this file):
++#  config.active_support.cache_format_version = 7.0
++
++
++# Cookie serializer: 2 options
++# 
++# If you're upgrading and haven't set `cookies_serializer` previously, your cookie serializer
++# is `:marshal`. The default for new apps is `:json`.
++#
++# Rails.application.config.action_dispatch.cookies_serializer = :json
++#
++#
++# To migrate an existing application to the `:json` serializer, use the `:hybrid` option.
++# 
++# Rails transparently deserializes existing (Marshal-serialized) cookies on read and
++# re-writes them in the JSON format.
++# 
++# It is fine to use `:hybrid` long term; you should do that until you're confident *all* your cookies
++# have been converted to JSON. To keep using `:hybrid` long term, move this config to its own
++# initializer or to `config/application.rb`.
++#
++# Rails.application.config.action_dispatch.cookies_serializer = :hybrid
++#
++#
++# If your cookies can't yet be serialized to JSON, keep using `:marshal` for backward-compatibility.
++#
++# If you have configured the serializer elsewhere, you can remove this section of the file.
++# 
++# See https://guides.rubyonrails.org/action_controller_overview.html#cookies for more information.
+diff --git a/permissions_policy.rb.tt b/permissions_policy.rb.tt
+new file mode 100644
+index 00000000000..00f64d71b03
+--- /dev/null
++++ b/permissions_policy.rb.tt
+@@ -0,0 +1,11 @@
++# Define an application-wide HTTP permissions policy. For further
++# information see https://developers.google.com/web/updates/2018/06/feature-policy
++#
++# Rails.application.config.permissions_policy do |f|
++#   f.camera      :none
++#   f.gyroscope   :none
++#   f.microphone  :none
++#   f.usb         :none
++#   f.fullscreen  :self
++#   f.payment     :self, "https://secure.example.com"
++# end
+diff --git a/production.rb.tt b/production.rb.tt
+new file mode 100644
+index 00000000000..0fb7d0976e0
+--- /dev/null
++++ b/production.rb.tt
+@@ -0,0 +1,107 @@
++require "active_support/core_ext/integer/time"
++
++Rails.application.configure do
++  # Settings specified here will take precedence over those in config/application.rb.
++
++  # Code is not reloaded between requests.
++  config.cache_classes = true
++
++  # Eager load code on boot. This eager loads most of Rails and
++  # your application in memory, allowing both threaded web servers
++  # and those relying on copy on write to perform better.
++  # Rake tasks automatically ignore this option for performance.
++  config.eager_load = true
++
++  # Full error reports are disabled and caching is turned on.
++  config.consider_all_requests_local       = false
++  <%- unless options.api? -%>
++  config.action_controller.perform_caching = true
++  <%- end -%>
++
++  # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
++  # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
++  # config.require_master_key = true
++
++  # Disable serving static files from the `/public` folder by default since
++  # Apache or NGINX already handles this.
++  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
++
++  <%- unless skip_sprockets? -%>
++  # Compress CSS using a preprocessor.
++  # config.assets.css_compressor = :sass
++
++  # Do not fallback to assets pipeline if a precompiled asset is missed.
++  config.assets.compile = false
++
++  <%- end -%>
++  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
++  # config.asset_host = "http://assets.example.com"
++
++  # Specifies the header that your server uses for sending files.
++  # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
++  # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
++
++  <%- unless skip_active_storage? -%>
++  # Store uploaded files on the local file system (see config/storage.yml for options).
++  config.active_storage.service = :local
++
++  <%- end -%>
++  <%- unless options[:skip_action_cable] -%>
++  # Mount Action Cable outside main process or domain.
++  # config.action_cable.mount_path = nil
++  # config.action_cable.url = "wss://example.com/cable"
++  # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
++
++  <%- end -%>
++  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
++  # config.force_ssl = true
++
++  # Include generic and useful information about system operation, but avoid logging too much
++  # information to avoid inadvertent exposure of personally identifiable information (PII).
++  config.log_level = :info
++
++  # Prepend all log lines with the following tags.
++  config.log_tags = [ :request_id ]
++
++  # Use a different cache store in production.
++  # config.cache_store = :mem_cache_store
++
++  <%- unless options[:skip_active_job] -%>
++  # Use a real queuing backend for Active Job (and separate queues per environment).
++  # config.active_job.queue_adapter     = :resque
++  # config.active_job.queue_name_prefix = "<%= app_name %>_production"
++
++  <%- end -%>
++  <%- unless options.skip_action_mailer? -%>
++  config.action_mailer.perform_caching = false
++
++  # Ignore bad email addresses and do not raise email delivery errors.
++  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
++  # config.action_mailer.raise_delivery_errors = false
++
++  <%- end -%>
++  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
++  # the I18n.default_locale when a translation cannot be found).
++  config.i18n.fallbacks = true
++
++  # Don't log any deprecations.
++  config.active_support.report_deprecations = false
++
++  # Use default logging formatter so that PID and timestamp are not suppressed.
++  config.log_formatter = ::Logger::Formatter.new
++
++  # Use a different logger for distributed setups.
++  # require "syslog/logger"
++  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
++
++  if ENV["RAILS_LOG_TO_STDOUT"].present?
++    logger           = ActiveSupport::Logger.new(STDOUT)
++    logger.formatter = config.log_formatter
++    config.logger    = ActiveSupport::TaggedLogging.new(logger)
++  end
++  <%- unless options.skip_active_record? -%>
++
++  # Do not dump schema after migrations.
++  config.active_record.dump_schema_after_migration = false
++  <%- end -%>
++end
+diff --git a/puma.rb.tt b/puma.rb.tt
+new file mode 100644
+index 00000000000..daaf0369998
+--- /dev/null
++++ b/puma.rb.tt
+@@ -0,0 +1,43 @@
++# Puma can serve each request in a thread from an internal thread pool.
++# The `threads` method setting takes two numbers: a minimum and maximum.
++# Any libraries that use thread pools should be configured to match
++# the maximum value specified for Puma. Default is set to 5 threads for minimum
++# and maximum; this matches the default thread size of Active Record.
++#
++max_threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
++min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
++threads min_threads_count, max_threads_count
++
++# Specifies the `worker_timeout` threshold that Puma will use to wait before
++# terminating a worker in development environments.
++#
++worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
++
++# Specifies the `port` that Puma will listen on to receive requests; default is 3000.
++#
++port ENV.fetch("PORT") { 3000 }
++
++# Specifies the `environment` that Puma will run in.
++#
++environment ENV.fetch("RAILS_ENV") { "development" }
++
++# Specifies the `pidfile` that Puma will use.
++pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
++
++# Specifies the number of `workers` to boot in clustered mode.
++# Workers are forked web server processes. If using threads and workers together
++# the concurrency of the application would be max `threads` * `workers`.
++# Workers do not work on JRuby or Windows (both of which do not support
++# processes).
++#
++# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
++
++# Use the `preload_app!` method when specifying a `workers` number.
++# This directive tells Puma to first boot the application and load code
++# before forking the application. This takes advantage of Copy On Write
++# process behavior so workers use less memory.
++#
++# preload_app!
++
++# Allow puma to be restarted by `bin/rails restart` command.
++plugin :tmp_restart
+diff --git a/robots.txt b/robots.txt
+new file mode 100644
+index 00000000000..c19f78ab683
+--- /dev/null
++++ b/robots.txt
+@@ -0,0 +1 @@
++# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+diff --git a/routes.rb.tt b/routes.rb.tt
+index 154452bfe55..262ffd54723 100644
+--- a/routes.rb.tt
++++ b/routes.rb.tt
+@@ -1,6 +1,6 @@
+-<% if mountable? -%>
+-<%= camelized_modules %>::Engine.routes.draw do
+-<% else -%>
+ Rails.application.routes.draw do
+-<% end -%>
++  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
++
++  # Defines the root path route ("/")
++  # root "articles#index"
+ end
+diff --git a/ruby-version.tt b/ruby-version.tt
+new file mode 100644
+index 00000000000..096cfd36a88
+--- /dev/null
++++ b/ruby-version.tt
+@@ -0,0 +1 @@
++<%= ENV["RBENV_VERSION"] || ENV["rvm_ruby_string"] || "#{RUBY_ENGINE}-#{RUBY_ENGINE_VERSION}" %>
+diff --git a/seeds.rb.tt b/seeds.rb.tt
+new file mode 100644
+index 00000000000..bc25fce3061
+--- /dev/null
++++ b/seeds.rb.tt
+@@ -0,0 +1,7 @@
++# This file should contain all the record creation needed to seed the database with its default values.
++# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
++#
++# Examples:
++#
++#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
++#   Character.create(name: "Luke", movie: movies.first)
+diff --git a/storage.yml.tt b/storage.yml.tt
+new file mode 100644
+index 00000000000..5e6bdfe07b0
+--- /dev/null
++++ b/storage.yml.tt
+@@ -0,0 +1,34 @@
++test:
++  service: Disk
++  root: <%%= Rails.root.join("tmp/storage") %>
++
++local:
++  service: Disk
++  root: <%%= Rails.root.join("storage") %>
++
++# Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
++# amazon:
++#   service: S3
++#   access_key_id: <%%= Rails.application.credentials.dig(:aws, :access_key_id) %>
++#   secret_access_key: <%%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
++#   region: us-east-1
++#   bucket: your_own_bucket-<%%= Rails.env %>
++
++# Remember not to checkin your GCS keyfile to a repository
++# google:
++#   service: GCS
++#   project: your_project
++#   credentials: <%%= Rails.root.join("path/to/gcs.keyfile") %>
++#   bucket: your_own_bucket-<%%= Rails.env %>
++
++# Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
++# microsoft:
++#   service: AzureStorage
++#   storage_account_name: your_account_name
++#   storage_access_key: <%%= Rails.application.credentials.dig(:azure_storage, :storage_access_key) %>
++#   container: your_container_name-<%%= Rails.env %>
++
++# mirror:
++#   service: Mirror
++#   primary: local
++#   mirrors: [ amazon, google, microsoft ]
+diff --git a/test.rb.tt b/test.rb.tt
+new file mode 100644
+index 00000000000..e3d1457774e
+--- /dev/null
++++ b/test.rb.tt
+@@ -0,0 +1,64 @@
++require "active_support/core_ext/integer/time"
++
++# The test environment is used exclusively to run your application's
++# test suite. You never need to work with it otherwise. Remember that
++# your test database is "scratch space" for the test suite and is wiped
++# and recreated between test runs. Don't rely on the data there!
++
++Rails.application.configure do
++  # Settings specified here will take precedence over those in config/application.rb.
++
++  # Turn false under Spring and add config.action_view.cache_template_loading = true.
++  config.cache_classes = true
++
++  # Eager loading loads your whole application. When running a single test locally,
++  # this probably isn't necessary. It's a good idea to do in a continuous integration
++  # system, or in some way before deploying your code.
++  config.eager_load = ENV["CI"].present?
++
++  # Configure public file server for tests with Cache-Control for performance.
++  config.public_file_server.enabled = true
++  config.public_file_server.headers = {
++    "Cache-Control" => "public, max-age=#{1.hour.to_i}"
++  }
++
++  # Show full error reports and disable caching.
++  config.consider_all_requests_local       = true
++  config.action_controller.perform_caching = false
++  config.cache_store = :null_store
++
++  # Raise exceptions instead of rendering exception templates.
++  config.action_dispatch.show_exceptions = false
++
++  # Disable request forgery protection in test environment.
++  config.action_controller.allow_forgery_protection = false
++
++  <%- unless skip_active_storage? -%>
++  # Store uploaded files on the local file system in a temporary directory.
++  config.active_storage.service = :test
++
++  <%- end -%>
++  <%- unless options.skip_action_mailer? -%>
++  config.action_mailer.perform_caching = false
++
++  # Tell Action Mailer not to deliver emails to the real world.
++  # The :test delivery method accumulates sent emails in the
++  # ActionMailer::Base.deliveries array.
++  config.action_mailer.delivery_method = :test
++
++  <%- end -%>
++  # Print deprecation notices to the stderr.
++  config.active_support.deprecation = :stderr
++
++  # Raise exceptions for disallowed deprecations.
++  config.active_support.disallowed_deprecation = :raise
++
++  # Tell Active Support which deprecation messages to disallow.
++  config.active_support.disallowed_deprecation_warnings = []
++
++  # Raises error for missing translations.
++  # config.i18n.raise_on_missing_translations = true
++
++  # Annotate rendered view with file names.
++  # config.action_view.annotate_rendered_view_with_filenames = true
++end
+diff --git a/test_helper.rb.tt b/test_helper.rb.tt
+index 3984f438c13..71014af81f8 100644
+--- a/test_helper.rb.tt
++++ b/test_helper.rb.tt
+@@ -1,21 +1,19 @@
+-# Configure Rails Environment
+-ENV["RAILS_ENV"] = "test"
++ENV["RAILS_ENV"] ||= "test"
++require_relative "../config/environment"
++require "rails/test_help"
+ 
+-require_relative "<%= File.join("..", options[:dummy_path], "config/environment") -%>"
+-<% unless options[:skip_active_record] -%>
+-ActiveRecord::Migrator.migrations_paths = [File.expand_path("../<%= options[:dummy_path] -%>/db/migrate", __dir__)]
+-<% if options[:mountable] -%>
+-ActiveRecord::Migrator.migrations_paths << File.expand_path("../db/migrate", __dir__)
++class ActiveSupport::TestCase
++  # Run tests in parallel with specified workers
++<% if Process.respond_to?(:fork) && !Gem.win_platform? -%>
++  parallelize(workers: :number_of_processors)
++<%- else -%>
++  parallelize(workers: :number_of_processors, with: :threads)
+ <% end -%>
+-<% end -%>
+-require "rails/test_help"
+ 
+ <% unless options[:skip_active_record] -%>
+-# Load fixtures from the engine
+-if ActiveSupport::TestCase.respond_to?(:fixture_path=)
+-  ActiveSupport::TestCase.fixture_path = File.expand_path("fixtures", __dir__)
+-  ActionDispatch::IntegrationTest.fixture_path = ActiveSupport::TestCase.fixture_path
+-  ActiveSupport::TestCase.file_fixture_path = ActiveSupport::TestCase.fixture_path + "/files"
+-  ActiveSupport::TestCase.fixtures :all
+-end
++  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
++  fixtures :all
++
+ <% end -%>
++  # Add more helper methods to be used by all tests here...
++end
